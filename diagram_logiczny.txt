@@ -1,0 +1,37 @@
+@startuml
+object album {
+  * album_id: serial
+  * album_name: text(64)
+  * desc: text(1024)
+}
+object photos {
+  * photo_id: serial
+  * photo_title: text(64)
+  * location_id: unsigned int
+}
+
+object location {
+  * location_id: serial
+  * city: text(64)
+  * name: text(64)
+  * country: text(64)
+}
+
+object tag {
+  * tag_id: serial
+  * tag_name: text(32)
+}
+
+object comments {
+  * comment_id: serial
+  * nickname: text(32)
+  * date: date
+  * content: text(1024)
+  * photo_id: unsigned int
+}
+
+album ||--o{ photos
+location --o{ photos
+tag }o--o{ photos
+photos ||--o{ comments
+@enduml

@@ -1,0 +1,53 @@
+@startuml
+object album {
+  * album_id: serial
+  * album_name: text(64)
+  * desc: text(1024)
+}
+object photos_of_album {
+  * photos_of_album_id: serial
+  * photo_id: serial
+  * album_id: serial
+}
+object photos {
+  * photo_id: serial
+  * photo_title: text(64)
+  * location_id: unsigned int
+}
+
+object location {
+  * location_id: serial
+  * city: text(64)
+  * name: text(64)
+  * country: text(64)
+}
+object photos_tag {
+  * tag_photo_id: serial
+  * tag_id: serial
+  * photo_id: serial
+}
+object  tag {
+  * tag_id: serial
+  * tag_name: text(32)
+}
+object tag {
+  * tag_id: serial
+  * tag_name: text(32)
+}
+
+
+object comments {
+  * comment_id: serial
+  * nickname: text(32)
+  * date: date
+  * content: text(1024)
+  * photo_id: unsigned int
+}
+
+album ||--o{ photos_of_album
+photos_of_album }o--o{ photos
+location -o{ photos
+tag }o--o{ photos_tag
+photos_tag }o--o{ photos
+photos ||--o{ comments
+@enduml

@@ -1,0 +1,37 @@
+@startuml
+object album {
+  * album_id
+  * album_name
+  * desc
+}
+object  photos {
+  * photo_id
+  * photo_title
+  * location_id
+}
+
+object location {
+  * location_id
+  * city
+  * name
+  * country
+}
+
+object tag {
+  * tag_id
+  * tag_name
+}
+
+object comments {
+  * comment_id
+  * nickname
+  * date
+  * content
+  * photo_id
+}
+
+album ||--o{ photos
+location --o{ photos
+tag }o--o{ photos
+photos ||--o{ comments
+@enduml
